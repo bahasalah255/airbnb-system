@@ -37,7 +37,7 @@ class OwnerDashboardController extends Controller
 
         $bookedNights = (float) Reservation::whereIn('apartment_id', $apartmentIds)
             ->where('status', 'confirmed')
-            ->selectRaw('COALESCE(SUM(DATEDIFF(check_out, check_in)), 0) as nights')
+            ->selectRaw('COALESCE(SUM(check_out - check_in), 0) as nights')
             ->value('nights');
 
         $availableNights = max(1, Apartment::where('owner_id', $ownerId)->where('is_active', true)->count() * 365);
@@ -354,7 +354,7 @@ class OwnerDashboardController extends Controller
             ->join('apartments', 'reservations.apartment_id', '=', 'apartments.id')
             ->where('apartments.owner_id', $ownerId)
             ->where('reservations.status', 'confirmed')
-            ->selectRaw('COALESCE(SUM(DATEDIFF(reservations.check_out, reservations.check_in)), 0) as nights')
+            ->selectRaw('COALESCE(SUM(reservations.check_out - reservations.check_in), 0) as nights')
             ->value('nights');
 
         $availableNights = max(1, Apartment::where('owner_id', $ownerId)->where('is_active', true)->count() * 365);

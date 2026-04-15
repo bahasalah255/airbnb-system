@@ -30,7 +30,7 @@ class AdminDashboardController extends Controller
         $totalRevenue = (float) Reservation::where('status', 'confirmed')->sum('total_price');
 
         $bookedNights = (float) Reservation::where('status', 'confirmed')
-            ->selectRaw('COALESCE(SUM(DATEDIFF(check_out, check_in)), 0) as nights')
+            ->selectRaw('COALESCE(SUM(check_out - check_in), 0) as nights')
             ->value('nights');
 
         $availableNights = max(1, Apartment::where('is_active', true)->count() * 365);
