@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-export const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000').replace(/\/$/, '')
+export const API_BASE_URL = (import.meta.env.VITE_API_BASE_URL ?? 'https://repo-apartement.onrender.com').replace(/\/$/, '')
 
 const client = axios.create({
   baseURL: API_BASE_URL,
