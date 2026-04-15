@@ -7,7 +7,8 @@ RUN composer install \
     --no-interaction \
     --no-progress \
     --prefer-dist \
-    --optimize-autoloader
+    --optimize-autoloader \
+    --no-scripts
 
 FROM node:20-bookworm-slim AS assets
 WORKDIR /app
