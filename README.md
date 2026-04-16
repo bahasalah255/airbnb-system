@@ -12,17 +12,11 @@ Live Demo: https://repo-apartement.vercel.app/
 
 ## Screenshots
 
-### Owner Panel 
-![Home](<img width="1898" height="931" alt="image" src="https://github.com/user-attachments/assets/279079ce-db0f-42aa-ae1e-9934f4abec80" />
-)
+![Owner Panel](https://github.com/user-attachments/assets/279079ce-db0f-42aa-ae1e-9934f4abec80)
 
-### Client Porfolio 
-![Apartments](<img width="1898" height="931" alt="image" src="https://github.com/user-attachments/assets/9a27c733-c3d5-4050-b3e1-bdc09ee81db1" />
-)
+![Client Interface](https://github.com/user-attachments/assets/9a27c733-c3d5-4050-b3e1-bdc09ee81db1)
 
-### Admin Dashbord
-![admin](<img width="1898" height="931" alt="image" src="https://github.com/user-attachments/assets/376289a2-20fb-4bd4-8f74-46e71419b1f9" />
-)
+![Admin Dashboard](https://github.com/user-attachments/assets/376289a2-20fb-4bd4-8f74-46e71419b1f9)
 
 
 ---
