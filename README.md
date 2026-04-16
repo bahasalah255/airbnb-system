@@ -1,18 +1,42 @@
-# Apartment Rental Management System
+<div align="center">
 
-A full-stack web application for managing short-term apartment rentals. The platform provides a complete workflow for listing apartments, handling reservations, and managing users through a modern, scalable, and maintainable architecture.
+<h1>Apartment Rental Management System</h1>
 
----
+<p>A full-stack web application for managing short-term apartment rentals — from listing and booking to administration and analytics.</p>
 
-## Demo
+<p>
+  <a href="https://repo-apartement.vercel.app/" target="_blank">
+    <img src="https://img.shields.io/badge/Live%20Demo-Visit%20Site-0a66c2?style=for-the-badge" alt="Live Demo" />
+  </a>
+  <img src="https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel" />
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" alt="React" />
+  <img src="https://img.shields.io/badge/PHP-8.3-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP 8.3" />
+  <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" alt="MySQL" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+</p>
 
-Live Demo: https://repo-apartement.vercel.app/
+</div>
 
 ---
 
 ## Overview
 
-This system allows users to browse apartments, check availability, and make reservations, while providing dedicated dashboards for administrators and property owners to manage the platform efficiently.
+This platform provides a complete short-term rental workflow. Clients can browse available apartments, check real-time availability, and make reservations. Owners manage their listings and monitor bookings through a dedicated panel. Administrators have full system control — managing users, reservations, and viewing platform-wide analytics.
+
+The architecture follows a clean separation between a Laravel REST API backend and a React SPA frontend, designed to be scalable and maintainable.
+
+---
+
+## Features
+
+| Feature | Description |
+|---|---|
+| Role-Based Authentication | Separate portals and permissions for Admin, Owner, and Client roles |
+| Apartment Management | Full CRUD operations for listings with availability control |
+| Reservation System | Real-time availability validation and end-to-end booking workflow |
+| Interactive Calendar | Visual booking calendar powered by FullCalendar |
+| Admin Dashboard | Platform analytics, user management, and system control |
+| Responsive UI | Modern, mobile-friendly design built with Tailwind CSS |
 
 ---
 
@@ -29,42 +53,29 @@ This system allows users to browse apartments, check availability, and make rese
 
 ---
 
-## Features
-
-- Role-based authentication (Admin, Owner, Client)
-- Apartment management with full CRUD operations
-- Reservation system with real-time availability validation
-- Interactive calendar for booking management
-- Admin dashboard with analytics and system control
-- Responsive and modern UI built with Tailwind CSS
-
----
-
 ## Tech Stack
 
 ### Backend
-- Laravel (REST API)
-- PHP 8.3
-- MySQL
+- **[Laravel](https://laravel.com/)** — REST API framework
+- **PHP 8.3**
+- **MySQL** — Relational database
+- **Laravel Sanctum** — Token-based API authentication
 
 ### Frontend
-- React
-- Vite
-- Tailwind CSS
-
-### Authentication
-- Laravel Sanctum
-
-### Additional Tools
-- FullCalendar
-- Lucide Icons
-- React Hot Toast
+- **[React](https://react.dev/)** — Component-based UI library
+- **[Vite](https://vitejs.dev/)** — Fast development build tool
+- **[Tailwind CSS](https://tailwindcss.com/)** — Utility-first CSS framework
+- **[FullCalendar](https://fullcalendar.io/)** — Interactive booking calendar
+- **[Lucide Icons](https://lucide.dev/)** — Icon library
+- **[React Hot Toast](https://react-hot-toast.com/)** — Toast notification system
 
 ---
 
-## Installation
+## Getting Started
 
-### Requirements
+### Prerequisites
+
+Ensure the following are installed before proceeding:
 
 - PHP 8.3+
 - Composer
@@ -72,71 +83,119 @@ This system allows users to browse apartments, check availability, and make rese
 - MySQL
 - Git
 
-### Setup
+### Installation
 
+**1. Clone the repository**
 ```bash
 git clone https://github.com/bahasalah255/airbnb-system.git
 cd airbnb-system
+```
 
+**2. Install dependencies**
+```bash
 composer install
 npm install
+```
 
+**3. Configure environment variables**
+```bash
 cp .env.example .env
 ```
-Configure your database in .env
-DB_DATABASE=your_database
+
+Open `.env` and update the database credentials:
+```env
+DB_DATABASE=your_database_name
 DB_USERNAME=your_username
 DB_PASSWORD=your_password
+```
+
+**4. Generate the application key and run database migrations**
+```bash
+php artisan key:generate
+php artisan migrate --seed
+```
+
+**5. Start the development servers**
+
+In one terminal, start the backend:
+```bash
+php artisan serve
+```
+
+In a second terminal, start the frontend:
+```bash
+npm run dev
+```
+
+The application will be available at `http://localhost:8000`.
 
 ---
 
-php artisan key:generate
-php artisan migrate --seed
+## Test Accounts
 
-php artisan serve
-npm run dev
+The following accounts are pre-seeded for testing each role:
 
----- 
-Usage
-Test Accounts
+| Role | Email | Password |
+|------|-------|----------|
+| Admin | admin@example.com | password |
+| Owner | owner@example.com | password |
+| Client | client@example.com | password |
 
-Admin
-email: admin@example.com
+---
 
-password: password
+## API Reference
 
-Owner
-email: owner@example.com
+All protected endpoints require a Bearer token issued by Laravel Sanctum, obtained upon login.
 
-password: password
+### Apartments
 
-Client
-email: client@example.com
+```
+GET  /api/apartments           — Retrieve all apartments
+GET  /api/apartments/{id}      — Retrieve a single apartment
+```
 
-password: password
+### Availability
 
-How it works
-Clients browse apartments and make reservations
-Owners manage their listings and availability
-Admin controls users, reservations, and system data
+```
+GET  /api/apartments/{id}/availability   — Check availability for an apartment
+```
 
------ 
-API Endpoints
-Apartments
-GET /api/apartments
-GET /api/apartments/{id}
-Availability
-GET /api/apartments/{id}/availability
-Reservations
-POST /api/reservations
-Admin
-GET /api/admin/stats
+### Reservations
 
------
+```
+POST /api/reservations         — Create a new reservation
+```
 
-app/                # Backend logic (controllers, models)
-database/           # Migrations and seeders
-resources/js/       # React frontend (components, pages)
-routes/api.php      # API routes
-routes/web.php      # Web routes
+### Admin
 
+```
+GET  /api/admin/stats          — Retrieve platform-wide statistics
+```
+
+---
+
+## Project Structure
+
+```
+airbnb-system/
+├── backend/
+│   ├── app/                  # Controllers, Models, Middleware
+│   ├── database/             # Migrations and Seeders
+│   └── routes/
+│       ├── api.php           # API route definitions
+│       └── web.php           # Web route definitions
+└── front-end/
+    └── resources/js/         # React components and pages
+```
+
+---
+
+## Live Demo
+
+The application is deployed and accessible at **[repo-apartement.vercel.app](https://repo-apartement.vercel.app/)**.
+
+---
+
+## License
+
+This project is open-source. You are free to use, modify, and distribute it.
